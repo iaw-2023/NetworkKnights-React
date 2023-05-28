@@ -8,7 +8,8 @@ function PetCard(pet) {
       <Card.Img variant="top" src={pet.image} />
       <Card.Body>
         <Card.Title>{pet.name}</Card.Title>
-        <Card.Text>{pet.description}</Card.Text>
+        <Card.Text>{pet.category}</Card.Text>
+        <Card.Text>{pet.sex}</Card.Text>
         <Button variant="primary">Adoptar</Button>
       </Card.Body>
     </Card>
