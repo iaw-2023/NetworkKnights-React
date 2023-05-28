@@ -2,15 +2,13 @@
 import Button from 'react-bootstrap/Button';
 import Card from 'react-bootstrap/Card';
 
-function PetCard() {
+function PetCard(pet) {
   return (
     <Card style={{ width: '18rem' }}>
-      <Card.Img variant="top" src="https://estaticos-cdn.prensaiberica.es/clip/823f515c-8143-4044-8f13-85ea1ef58f3a_16-9-discover-aspect-ratio_default_0.jpg" />
+      <Card.Img variant="top" src={pet.image} />
       <Card.Body>
-        <Card.Title>Nombre mascota</Card.Title>
-        <Card.Text>
-          Descripcion de la mascota a adoptar
-        </Card.Text>
+        <Card.Title>{pet.name}</Card.Title>
+        <Card.Text>{pet.description}</Card.Text>
         <Button variant="primary">Adoptar</Button>
       </Card.Body>
     </Card>
