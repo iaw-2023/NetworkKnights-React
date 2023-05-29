@@ -6,7 +6,7 @@ import Col from 'react-bootstrap/Col';
 import PetCard from "../components/PetCard";
 
 function Mascotas() {
-    const apiURL = 'https://rodi-duran-laravel-79zb.vercel.app/rest';
+    const apiURL = 'https://rodi-duran-laravel-79zb-h08vqyo8z-network-knights.vercel.app/rest';
     const [pets, setPets] = useState();
 
     const getPets = async () => {
@@ -30,7 +30,6 @@ function Mascotas() {
                     />
                 </Col>
             )))}
-            
         </Row>
     )
 }
