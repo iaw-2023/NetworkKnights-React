@@ -13,7 +13,7 @@ function CategoryCard(category) {
           Some quick example text to build on the card title and make up the
           bulk of the card's content.
         </Card.Text>
-        <Link href={"/mascotas_categoria?id="+categoria} >Mostrar {category.name}s</Link>
+        <Link href={"/categorias/"+categoria} >Mostrar {category.name}s</Link>
         
       </Card.Body>
     </Card>
