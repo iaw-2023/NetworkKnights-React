@@ -2,6 +2,7 @@
 import Card from 'react-bootstrap/Card';
 
 function CategoryCard(category) {
+  const categoria = category.name;
   return (
     <Card style={{ width: '18rem' }}>
       <Card.Body>
@@ -11,7 +12,7 @@ function CategoryCard(category) {
           Some quick example text to build on the card title and make up the
           bulk of the card's content.
         </Card.Text>
-        <Card.Link href="#">Card Link</Card.Link>
+        <Card.Link href='/mascotas_categoria' handler={categoria}>Mostrar {category.name}s</Card.Link>
       </Card.Body>
     </Card>
   );

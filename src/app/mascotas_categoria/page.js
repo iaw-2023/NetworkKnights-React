@@ -5,18 +5,20 @@ import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
 import PetCard from "../components/PetCard";
 
-function Mascotas() {
+function Mascotas(props) {
     const apiURL = 'https://rodi-duran-laravel-79zb-h08vqyo8z-network-knights.vercel.app/rest';
     const [pets, setPets] = useState();
 
     const getPets = async () => {
-        const response = await fetch(`${apiURL}/pets`);
+        const response = await fetch(`${apiURL}/pets/category/`+props.categoria);
         setPets(await response.json());
     }
 
+    console.log("HOLAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"+props.categoria);
+    
     useEffect(() => {
         getPets();
-    },[]);
+    }, [props.categoria]); 
 
     return(
         <Row>

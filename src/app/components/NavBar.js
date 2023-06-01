@@ -9,6 +9,15 @@ function NavBar() {
   return (
     <Navbar bg="light" expand="lg">
       <Container>
+        <Navbar.Brand>
+        <img
+              src='https://images.vexels.com/media/users/3/201898/isolated/preview/55be9a1a39abff39bc3596e8ddd224cd-trazo-de-huella-de-perro-azul.png'
+              width="30"
+              height="30"
+              className="d-inline-block align-top"
+              alt="React Bootstrap logo"
+            />
+        </Navbar.Brand>
         <Navbar.Brand href="/">Mascotas en Adopción</Navbar.Brand>
         <Navbar.Toggle aria-controls="basic-navbar-nav" />
         <Navbar.Collapse id="basic-navbar-nav">
