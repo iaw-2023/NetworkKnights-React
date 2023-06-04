@@ -27,6 +27,7 @@ function Mascotas() {
                         sex = {pet.sex}
                         category = {pet.category_name}
                         image = {pet.image}
+                        id = {pet.id}
                     />
                 </Col>
             )))}
