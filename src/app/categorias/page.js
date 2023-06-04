@@ -20,14 +20,15 @@ function Categorias() {
 
   return(
     <Row>
-        {categories?.map((category => (
-            <Col md={4} className="mt-4">
-                <CategoryCard 
-                    name={category.name}
-                />
-            </Col>
-        )))}
+    {categories?.map((category) => (
+        <Col key={category.id} md={4} className="mt-4">
+            <CategoryCard 
+                name={category.name}
+            />
+        </Col>
+    ))}
     </Row>
+
   )
 }
 
