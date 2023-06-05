@@ -19,7 +19,9 @@ function NavBar() {
               alt="React Bootstrap logo"
             />
         </Navbar.Brand>
-        <Navbar.Brand href="/">Mascotas en Adopción</Navbar.Brand>
+        <Link href="/" >
+          <Navbar.Brand>Mascotas en Adopción</Navbar.Brand>
+        </Link>
         <Navbar.Toggle aria-controls="basic-navbar-nav" />
         <Navbar.Collapse id="basic-navbar-nav">
          

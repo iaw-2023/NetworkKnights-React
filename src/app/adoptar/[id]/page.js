@@ -3,9 +3,12 @@
 import { Form, FormGroup, FormControl, FormLabel, Button } from "react-bootstrap"
 import Modal from 'react-bootstrap/Modal';
 import React, {useState, useEffect} from "react";
+import OrderModal from "../../components/OrderModal";
 
 
 function AdoptarId({params}) {
+
+
   const apiURL = 'https://rodi-duran-laravel-79zb-hhxw14sen-network-knights.vercel.app/rest';
   const [email, setEmail] = useState('');
 
@@ -24,6 +27,10 @@ function AdoptarId({params}) {
     });
   };
 
+ function mostrarModal() {
+    <OrderModal/>
+    
+  };
 
   return(
     <Form onSubmit={handleSubmit}> 
@@ -36,8 +43,9 @@ function AdoptarId({params}) {
         />
       </FormGroup>
     
-      <Button variant="primary" type="submit">
+      <Button onClick={mostrarModal} variant="primary" type="submit">
         Enviar orden
+       
       </Button>
     </Form>
   )
