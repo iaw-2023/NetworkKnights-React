@@ -21,7 +21,7 @@ function Mascotas() {
     return(
         <Row>
             {pets?.map((pet => (
-                <Col md={4} className="mt-4">
+                <Col key={pet.id}md={4} className="mt-4">
                     <PetCard 
                         name={pet.name}
                         sex = {pet.sex}
