@@ -8,7 +8,7 @@ import PetCard from "../../components/PetCard";
 function CategoriaNombre({params}) {
     const apiURL = 'https://rodi-duran-laravel-79zb-hhxw14sen-network-knights.vercel.app/rest';
     const [pets, setPets] = useState();
-
+    
     const getPets = async () => {
         const response = await fetch(`${apiURL}/pets/category/`+params.nombre);
         setPets(await response.json());
