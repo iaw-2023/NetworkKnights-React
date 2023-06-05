@@ -12,8 +12,8 @@ function PetCard(pet) {
         <Card.Title>{pet.name}</Card.Title>
         <Card.Text>{pet.category}</Card.Text>
         <Card.Text>{pet.sex}</Card.Text>
-        <Button variant="primary">
-          <Link href={"/adoptar/"+petId} >Adoptar</Link>
+        <Button variant="secondary">
+          <Link href={"/adoptar/"+petId} className='link-dark ms-2'>Adoptar</Link>
         </Button>
       </Card.Body>
     </Card>

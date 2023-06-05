@@ -7,8 +7,7 @@ function CategoryCard(category) {
   return (
     <Card style={{ width: '18rem' }}>
       <Card.Body>
-        <Card.Title>categoria</Card.Title>
-        <Card.Subtitle className="mb-2 text-muted">Card Subtitle</Card.Subtitle>
+        <Card.Title>{categoria}</Card.Title>
         <Link href={"/categorias/"+categoria} >Mostrar {category.name}s</Link>
         
       </Card.Body>

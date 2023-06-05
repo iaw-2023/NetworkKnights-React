@@ -25,6 +25,7 @@ function CategoriaNombre({params}) {
                 <Col key={pet.id} md={4} className="mt-4">
                     <PetCard 
                         name={pet.name}
+                        
                         sex = {pet.sex}
                         category = {pet.category_name}
                         image = {pet.image}
