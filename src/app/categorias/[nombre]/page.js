@@ -8,7 +8,7 @@ import PetCard from "../../components/PetCard";
 function CategoriaNombre({params}) {
     const apiURL = 'https://rodi-duran-laravel-79zb-hhxw14sen-network-knights.vercel.app/rest';
     const [pets, setPets] = useState();
-    
+
     const getPets = async () => {
         const response = await fetch(`${apiURL}/pets/category/`+params.nombre);
         setPets(await response.json());
@@ -16,17 +16,16 @@ function CategoriaNombre({params}) {
     
     useEffect(() => {
         getPets();
-        console.log("entre a categoria "+params.nombre);
     }, [getPets, params.nombre]); 
 
     return(
         <Row>
             {pets?.map((pet => (
-                <Col key={pet.id} md={4} className="mt-4">
+                <Col key={pet.id}md={4} className="mt-4">
                     <PetCard 
                         name={pet.name}
-                        
                         sex = {pet.sex}
+                        id= {pet.id}
                         category = {pet.category_name}
                         image = {pet.image}
                     />
