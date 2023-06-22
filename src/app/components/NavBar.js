@@ -2,9 +2,11 @@
 
 import Container from 'react-bootstrap/Container';
 import Nav from 'react-bootstrap/Nav';
+import NavLink from 'react-bootstrap/Nav'
 import Navbar from 'react-bootstrap/Navbar';
 import NavDropdown from 'react-bootstrap/NavDropdown';
 import Link from "next/link";
+import Button from 'react-bootstrap/Button';
 
 function NavBar() {
   return (
@@ -19,21 +21,33 @@ function NavBar() {
               alt="React Bootstrap logo"
             />
         </Navbar.Brand>
-        <Link href="/" >
+        <Link href="/" style={{ textDecoration: 'none' }}>
           <Navbar.Brand>Mascotas en Adopción</Navbar.Brand>
         </Link>
         <Navbar.Toggle aria-controls="basic-navbar-nav" />
+
         <Navbar.Collapse id="basic-navbar-nav">
          
           <Nav className="me-auto">
-          <Link href="/categorias" >
+          <Link href="/categorias" style={{ textDecoration: 'none' }}>
             <Navbar.Brand >Categorias</Navbar.Brand>
           </Link>
 
-          <Link href="/mascotas" >
+          <Link href="/mascotas" style={{ textDecoration: 'none' }}>
             <Navbar.Brand >Mascotas</Navbar.Brand>
           </Link>
-            
+
+          
+          
+          <Nav className=" justify-content-end ms-auto">
+            <Button variant="secondary">
+              <Link href={""} style={{ textDecoration: 'none' }} className='link-dark'>Iniciar sesión</Link>
+            </Button>
+            <Button variant="info">
+              <Link href={"/registrar/"} style={{ textDecoration: 'none' }} className='link-dark'>Registrarse</Link>
+            </Button>
+          </Nav>
+
           </Nav>
         </Navbar.Collapse>
       </Container>
