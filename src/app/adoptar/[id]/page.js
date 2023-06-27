@@ -51,7 +51,7 @@ function AdoptarId({params}) {
       </FormGroup>
     
       <Button onClick={handleShow} variant="primary" type="submit">
-        Enviar ordennnnnnnnnn
+        Enviar orden
       </Button>
 
       <div
