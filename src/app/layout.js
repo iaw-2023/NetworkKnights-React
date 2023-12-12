@@ -7,9 +7,23 @@ import Container from 'react-bootstrap/Container';
 
 const inter = Inter({ subsets: ['latin'] })
 
+export const Metadata = {
+  title: 'MyNextPWA',
+  descrption: 'Mascotas en adopcion',
+  manifest: '/manifest.json',
+  
+}
+
 export default function RootLayout({ children }) {
   return (
+    
     <html lang="en">
+      <head>
+          <link
+              rel="manifest"
+              href="/manifest.json"
+          />
+      </head>
       <body className={inter.className}>
         <NavBar />
         <Container>
