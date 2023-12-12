@@ -13,7 +13,7 @@ function PetCard(pet) {
         <Card.Text>{pet.category}</Card.Text>
         <Card.Text>{pet.sex}</Card.Text>
         <Button variant="secondary">
-          <Link href={"/adoptar/"+petId} className='link-dark ms-2'>Adoptar</Link>
+          <Link href={"/adoptar/"+petId} style={{ textDecoration: 'none' }} className='link-dark ms-2'>Adoptar</Link>
         </Button>
       </Card.Body>
     </Card>
