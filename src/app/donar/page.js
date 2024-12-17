@@ -5,6 +5,7 @@ import Container from 'react-bootstrap/Container';
 import { initMercadoPago, Wallet } from '@mercadopago/sdk-react';
 import { useState, useRef } from 'react';
 import Form from 'react-bootstrap/Form';
+import CarouselDonar from "src/app/components/Carousel";
 
 function donar() {
   const apiURL = 'https://rodi-duran-laravel-79zb-h08vqyo8z-network-knights.vercel.app/rest';
@@ -50,14 +51,14 @@ function donar() {
 
     return(
       <Container>
-        <Row className="mt-4 ">
-          <Col xs={10} className="mx-auto ">
-            <h1>Podes hacer tu donación a nuestra pagina web a través de MercadoPago </h1>
+        <Row className="mt-4">
+          <Col className="mx-auto">
+            <CarouselDonar />
           </Col>
         </Row>
+
         <Row className="mt-4">
-        
-          <Col xs={5} className="border rounded">
+          <Col xs={6} className="py-3 px-5 border rounded">
           <h3>Ingresá un monto:</h3>
             <div class="input-group mb-3">
               <span class="input-group-text">$</span>
@@ -65,8 +66,10 @@ function donar() {
             </div>
             <Wallet initialization={{preferenceId: preferenciaId, redirectMode: 'self'}}/>
           </Col>
-          <Col xs={5} className=" mx-auto ">
-            <h3 className="border rounded"> Este año llevamos un total de donaciones de: </h3>
+          <Col xs={6} className="p-3 border rounded">
+            <h3> Este año llevamos un total de donaciones de: </h3>
+            <h1 className="pt-3 text-center"> 55 Donaciones!</h1>
+            <h4 className="pt-3 text-center">Ayudanos a seguir buscando un hogar!</h4>
           </Col>
         </Row>
       </Container>
