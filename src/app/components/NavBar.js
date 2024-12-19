@@ -3,9 +3,20 @@ import Nav from 'react-bootstrap/Nav';
 import Navbar from 'react-bootstrap/Navbar';
 import Link from "next/link";
 import Button from 'react-bootstrap/Button';
+import { useAuth0 } from '@auth0/auth0-react';
+import React, {useState, useEffect} from "react";
+import { useUser } from '@auth0/nextjs-auth0/client';
 
 function NavBar() {
-
+    const { user, isLoading } = useUser();
+  
+    if (isLoading) {
+      // Mostrar un indicador de carga mientras Auth0 verifica la sesión
+      return <div>Cargando...</div>;
+    }
+  
+    console.log('isLoading:', isLoading);
+    console.log('user:', user);
   return (
     <Navbar bg="light" expand="lg">
       <Container>
@@ -39,17 +50,28 @@ function NavBar() {
           </Nav>
 
           <Nav className="justify-content-end ms-auto">
-            <Button variant="secondary" className="me-2">
-              <Link href={"/loguear/"} style={{ textDecoration: 'none' }} className='link-dark'>Iniciar sesión</Link>
+            <div>
+            {!user ? (
+            <Button variant="outline-primary" className="me-2">
+              <Link href={"/api/auth/login"} style={{ textDecoration: 'none' }} className='link-primary'>Iniciar sesión</Link>
             </Button>
-
-            <Button variant="info">
-              <Link href={"/registrar/"} style={{ textDecoration: 'none' }} className='link-dark'>Registrarse</Link>
+            ) : (
+            <div className="d-flex gap-2 flex-grow-1 justify-content-end">
+            <Button variant="outline-dark">
+              <Link href={"/perfil/"} style={{ textDecoration: 'none' }} className='link-dark'>Mi Perfil</Link>
             </Button>
+            <Button variant="outline-dark">
+              <Link href={"/api/auth/logout"} style={{ textDecoration: 'none' }} className='link-dark'>Cerrar Sesion</Link>
+            </Button>
+            </div>
+            )}
+            </div>
           </Nav>
         </Navbar.Collapse>
       </Container>
     </Navbar>
+
+    
   );
 }
 
