@@ -1,5 +1,11 @@
 'use client' ;
+//import { Container } from "postcss";
 import LoginForm from "../components/LoginForm";
+import { Row } from "react-bootstrap";
+import Col from 'react-bootstrap/Col';
+import Container from 'react-bootstrap/Container';
+import ModernList from "../components/ModernList";
+import TextoLoguear from "../components/TextoLoguear";
 
 function Loguear() {
   const apiURL ='rodi-duran-laravel-79zb-git-autenticacion-network-knights.vercel.app/rest';
@@ -26,7 +32,19 @@ function Loguear() {
   };
 
   return (
-    <LoginForm onFormSubmit={handleFormSubmit} />
+    <Container>
+      <Row className="mt-4">
+        <TextoLoguear />
+      </Row>
+      <Row className="mt-4">
+        <Col>
+        <LoginForm onFormSubmit={handleFormSubmit} />
+        <ModernList />
+        </Col>
+      </Row>
+
+    </Container>
+    
   );
 }
 
