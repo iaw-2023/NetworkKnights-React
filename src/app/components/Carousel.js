@@ -1,34 +1,31 @@
 import Carousel from 'react-bootstrap/Carousel';
 import ExampleCarouselImage from './ExampleCarouselImage';
+import '../CarouselDonar.css';
 
 function CarouselDonar() {
   return (
-    <Carousel>
+    <Carousel className="carousel-donar">
       <Carousel.Item>
-        <ExampleCarouselImage text="First slide" />
-        <Carousel.Caption>
-          <h3>First slide label</h3>
-          <p>Nulla vitae elit libero, a pharetra augue mollis interdum.</p>
-        </Carousel.Caption>
+        <div className="carousel-text">
+          <h2>Tu ayuda puede cambiar vidas:</h2>
+          <p>Dona y dale una segunda oportunidad a un animal rescatado.</p>
+        </div>
       </Carousel.Item>
       <Carousel.Item>
-        <ExampleCarouselImage text="Second slide" />
-        <Carousel.Caption>
-          <h3>Second slide label</h3>
-          <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
-        </Carousel.Caption>
+        <div className="carousel-text">
+          <h2>Apóyanos en nuestra misión:</h2>
+          <p>Rescatar, proteger y dar esperanza a quienes más lo necesitan.</p>
+        </div>
       </Carousel.Item>
       <Carousel.Item>
-        <ExampleCarouselImage text="Third slide" />
-        <Carousel.Caption>
-          <h3>Third slide label</h3>
-          <p>
-            Praesent commodo cursus magna, vel scelerisque nisl consectetur.
-          </p>
-        </Carousel.Caption>
+        <div className="carousel-text">
+          <h2>Tu generosidad es su salvación:</h2>
+          <p>Ayúdanos a salvar más vidas hoy.</p>
+        </div>
       </Carousel.Item>
     </Carousel>
   );
+
 }
 
 export default CarouselDonar;

@@ -7,9 +7,9 @@ function TablaPerfil() {
           <thead>
             <tr>
               <th>#</th>
-              <th>First Name</th>
-              <th>Last Name</th>
-              <th>Username</th>
+              <th>Especie</th>
+              <th>Nombre</th>
+              <th>Estado</th>
             </tr>
           </thead>
           <tbody>

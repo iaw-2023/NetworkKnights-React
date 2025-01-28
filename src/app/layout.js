@@ -28,11 +28,11 @@ export default function RootLayout({ children }) {
       </head>
       <UserProvider>
       <body className={inter.className}>
-        <NavBar />
-        <Container>
-          {children}
-        </Container>
-        <Footer />
+          <NavBar />
+              <Container>
+                {children}
+              </Container>
+          <Footer />
       </body>
       </UserProvider>
     </html>

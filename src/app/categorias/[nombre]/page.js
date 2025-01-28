@@ -6,7 +6,8 @@ import Col from 'react-bootstrap/Col';
 import PetCard from "../../components/PetCard";
 
 function CategoriaNombre({params}) {
-    const apiURL = 'https://rodi-duran-laravel-79zb-hhxw14sen-network-knights.vercel.app/rest';
+    //const apiURL = 'https://rodi-duran-laravel-79zb-hhxw14sen-network-knights.vercel.app/rest';
+    const apiURL = 'http://127.0.0.1:8000/rest';
     const [pets, setPets] = useState();
 
     const getPets = async () => {
