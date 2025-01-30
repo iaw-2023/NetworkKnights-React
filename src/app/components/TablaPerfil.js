@@ -33,6 +33,11 @@ function TablaPerfil() {
         3: "Conejo"
     };
 
+    const sexo = {
+      male: "Macho",
+      female:"Hembra"
+    }
+
     return (
 
       <Table striped bordered hover >
@@ -50,7 +55,7 @@ function TablaPerfil() {
                             <td>{pet.id}</td>
                             <td>{categoryNames[pet.id_category]}</td>
                             <td>{pet.name}</td>
-                            <td>{pet.sex}</td>
+                            <td>{sexo[pet.sex]}</td>
                         
                     </tr>
                 )))}
