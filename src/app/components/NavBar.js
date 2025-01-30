@@ -15,8 +15,6 @@ function NavBar() {
       return <div>Cargando...</div>;
     }
   
-    console.log('isLoading:', isLoading);
-    console.log('user:', user);
   return (
     <Navbar bg="light" expand="lg">
       <Container>

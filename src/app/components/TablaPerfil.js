@@ -1,8 +1,86 @@
 import Table from 'react-bootstrap/Table';
 import { Container, Row, Col, Card, Button, ListGroup, Image } from 'react-bootstrap';
+import { useUser } from '@auth0/nextjs-auth0/client';
+import React, {useState, useEffect} from "react";
 
 function TablaPerfil() {
+  const apiURL = 'http://127.0.0.1:8000/rest';
+
+  const { user, isLoading } = useUser();
+    
+      if (isLoading) {
+        // Mostrar un indicador de carga mientras Auth0 verifica la sesión
+        return <div>Cargando...</div>;
+      }
+
+      const email = user.email;
+      console.log('email:',email);
+
+      const [pets, setPets] = useState();
+  
+      const getPets = async () => {
+          const response = await fetch(`${apiURL}/orders/${email}`);
+          setPets(await response.json());
+      }
+  
+      useEffect(() => {
+          getPets();
+      },[]);
+  
+      const categoryNames = {
+        1: "Perro",
+        2: "Gato",
+        3: "Conejo"
+    };
+
     return (
+
+      <Table striped bordered hover >
+      <thead>
+        <tr>
+          <th>ID Orden</th>
+          <th>Especie</th>
+          <th>Nombre</th>
+          <th>Sexo</th>
+        </tr>
+      </thead>
+      <tbody>
+        {pets?.map((pet => (
+                    <tr key={pet.id}md={4} className="mt-4">
+                            <td>{pet.id}</td>
+                            <td>{categoryNames[pet.id_category]}</td>
+                            <td>{pet.name}</td>
+                            <td>{pet.sex}</td>
+                        
+                    </tr>
+                )))}
+
+      </tbody>
+    </Table>
+
+      /*
+
+      <Container>
+            <Row>
+                {pets?.map((pet => (
+                    <Col key={pet.id}md={4} className="mt-4">
+                        <PetCard 
+                            name={pet.name}
+                            sex = {pet.sex}
+                            category = {pet.category_name}
+                            image = {pet.image}
+                            id = {pet.id}
+                        />
+                    </Col>
+                )))}
+            </Row>
+            <Row className="mt-4">
+                <hr className="my-4" />
+            </Row>
+        </Container>
+
+
+
         <Table striped bordered hover >
           <thead>
             <tr>
@@ -32,6 +110,7 @@ function TablaPerfil() {
             </tr>
           </tbody>
         </Table>
+        */
       );
     }
 
