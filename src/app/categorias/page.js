@@ -20,6 +20,7 @@ function Categorias() {
 
   return(
     <Container>
+        <title>Categorias</title>
     <Row>
     {categories?.map((category) => (
         <Col key={category.name} md={4} className="mt-4">

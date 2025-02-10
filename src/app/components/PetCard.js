@@ -9,7 +9,7 @@ function PetCard(pet) {
   const petId = pet.id;
   return (
     <Card className="shadow-sm rounded text-center" style={{ width: '18rem', overflow: 'hidden' }}>
-      <Card.Img variant="top" src={pet.image} style={{ height: '200px', objectFit: 'cover' }} />
+      <Card.Img variant="top" src={pet.image} alt={`Foto de ${pet.name}`} style={{ height: '200px', objectFit: 'cover' }} />
       <Card.Body className="d-flex flex-column align-items-center">
         
         <Card.Title className="fw-bold text-secondary">{pet.name}</Card.Title>
@@ -21,7 +21,7 @@ function PetCard(pet) {
           </Card.Text>
         
         <Button variant="outline-secondary">
-          <Link href={"/adoptar/"+petId} style={{ textDecoration: 'none' }} className='link-dark mt-2'>Adoptar</Link>
+          <Link href={"/adoptar/"+petId}  style={{ padding: "24px", fontSize: "1.2rem", textDecoration: 'none'}} className='link-dark mt-2'>Adoptar</Link>
         </Button>
       
       </Card.Body>

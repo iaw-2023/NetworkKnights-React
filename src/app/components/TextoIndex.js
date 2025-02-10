@@ -4,6 +4,7 @@ import { Container } from "react-bootstrap";
 const TextoIndex = () => {
   return (
     <Container className="text-center mt-3">
+      <title>Mascotas en adopción</title>
       <h1 className="display-3 fw-bold text-dark">¡Bienvenido a nuestra plataforma!</h1>
       <p className="lead text-muted">
         Explora, encuentra y adopta a tu nuevo mejor amigo con tan solo unos clics.

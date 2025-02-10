@@ -51,6 +51,7 @@ function donar() {
 
     return(
       <Container>
+        <title>Donaciones</title>
         <Row className="mt-4">
           <Col className="mx-auto">
             <CarouselDonar />
@@ -59,10 +60,11 @@ function donar() {
 
         <Row className="mt-4">
           <Col xs={6} className="py-3 px-5 border rounded">
-          <h3>Ingresá un monto:</h3>
-            <div class="input-group mb-3">
+          <label htmlFor="donacion" className="fw-bold d-block mb-2">Ingresá un monto:</label>
+            <div className="input-group mb-3">
               <span class="input-group-text">$</span>
-              <input type="text" class="form-control" onChange={(evento) => {ejecutarDonacion(evento.target.value)}}/>
+              <input type="text" className="form-control" id="donacion" aria-label="Monto a donar" class="form-control" 
+                  onChange={(evento) => {ejecutarDonacion(evento.target.value)}}/>
             </div>
             <Wallet initialization={{preferenceId: preferenciaId, redirectMode: 'self'}}/>
           </Col>
@@ -73,7 +75,7 @@ function donar() {
                 55
               </div>
               <h4 className="pt-4 text-secondary">¡Ayúdanos a seguir buscando un hogar!</h4>
-              <button className="btn btn-primary mt-4 px-4 py-2">Dona Ahora</button>
+              <button className="btn btn-primary mt-4 px-4 py-2">Dona ahora</button>
             </div>
           </Col>
         </Row>

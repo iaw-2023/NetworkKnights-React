@@ -21,6 +21,7 @@ function Mascotas() {
 
     return(
         <Container>
+            <title>Mascotas</title>
             <Row>
                 {pets?.map((pet => (
                     <Col key={pet.id}md={4} className="mt-4">
