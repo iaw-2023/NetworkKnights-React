@@ -5,6 +5,7 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import NavBar from "./components/NavBar";
 import Container from 'react-bootstrap/Container';
 import Footer from "./components/Footer";
+import { UserProvider } from '@auth0/nextjs-auth0/client';
 
 const inter = Inter({ subsets: ['latin'] })
 
@@ -25,13 +26,15 @@ export default function RootLayout({ children }) {
               href="/manifest.json"
           />
       </head>
+      <UserProvider>
       <body className={inter.className}>
-        <NavBar />
-        <Container>
-          {children}
-        </Container>
-        <Footer />
+          <NavBar />
+              <Container>
+                {children}
+              </Container>
+          <Footer />
       </body>
+      </UserProvider>
     </html>
   )
 }

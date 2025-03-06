@@ -5,9 +5,14 @@ import Modal from 'react-bootstrap/Modal';
 import React, {useState, useEffect} from "react";
 import OrderModal from "../../components/OrderModal";
 import Link from "next/link";
+import { useUser } from '@auth0/nextjs-auth0/client';
 
 
 function AdoptarId({params}) {
+
+  const { user, error, isLoading } = useUser();
+    if (isLoading) return <div>Loading...</div>;
+    if (error) return <div>{error.message}</div>;
 
   const [show, setShow] = useState(false);
 
@@ -16,7 +21,8 @@ function AdoptarId({params}) {
   const handleClose = () => setShow(false);
 
 
-  const apiURL = 'https://rodi-duran-laravel-79zb-hhxw14sen-network-knights.vercel.app/rest';
+  //const apiURL = 'https://rodi-duran-laravel-79zb-hhxw14sen-network-knights.vercel.app/rest';
+  const apiURL = 'http://127.0.0.1:8000/rest';
   const [email, setEmail] = useState('');
 
   const handleSubmit = async (e) => {
@@ -24,9 +30,13 @@ function AdoptarId({params}) {
     e.preventDefault();
     
     const queryJson={
-      email,
-      id_pet: params.id
+      email: user.email,
+      id_pet: params.id,
+      name: user.given_name,
+      surname: user.family_name
     } 
+
+    console.log("Datos enviados:", queryJson);
 
     const response = await fetch(`${apiURL}/orders`, {
         method: 'POST',

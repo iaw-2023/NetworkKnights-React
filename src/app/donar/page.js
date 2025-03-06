@@ -51,6 +51,7 @@ function Donar() {
 
     return(
       <Container>
+        <title>Donaciones</title>
         <Row className="mt-4">
           <Col className="mx-auto">
             <CarouselDonar />
@@ -59,18 +60,27 @@ function Donar() {
 
         <Row className="mt-4">
           <Col xs={6} className="py-3 px-5 border rounded">
-          <h3>Ingresá un monto:</h3>
-            <div class="input-group mb-3">
+          <label htmlFor="donacion" className="fw-bold d-block mb-2">Ingresá un monto:</label>
+            <div className="input-group mb-3">
               <span class="input-group-text">$</span>
-              <input type="text" class="form-control" onChange={(evento) => {ejecutarDonacion(evento.target.value)}}/>
+              <input type="text" className="form-control" id="donacion" aria-label="Monto a donar" class="form-control" 
+                  onChange={(evento) => {ejecutarDonacion(evento.target.value)}}/>
             </div>
             <Wallet initialization={{preferenceId: preferenciaId, redirectMode: 'self'}}/>
           </Col>
-          <Col xs={6} className="p-3 border rounded">
-            <h3> Este año llevamos un total de donaciones de: </h3>
-            <h1 className="pt-3 text-center"> 55 Donaciones!</h1>
-            <h4 className="pt-3 text-center">Ayudanos a seguir buscando un hogar!</h4>
+          <Col xs={12} md={6} className="p-4 border rounded text-styled ">
+            <div className="text-center">
+              <h3 className="mb-4 text-secondary">Este año llevamos un total de donaciones de:</h3>
+              <div className="d-inline-block p-4 rounded-circle bg-primary text-white display-4 fw-bold">
+                55
+              </div>
+              <h4 className="pt-4 text-secondary">¡Ayúdanos a seguir buscando un hogar!</h4>
+              <button className="btn btn-primary mt-4 px-4 py-2">Dona ahora</button>
+            </div>
           </Col>
+        </Row>
+        <Row className="mt-4">
+          <hr className="my-4" />
         </Row>
       </Container>
     )
