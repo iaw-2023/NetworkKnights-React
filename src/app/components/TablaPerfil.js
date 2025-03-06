@@ -1,12 +1,15 @@
 import Table from 'react-bootstrap/Table';
 import { Container, Row, Col, Card, Button, ListGroup, Image } from 'react-bootstrap';
-import { useUser } from '@auth0/nextjs-auth0/client';
+import { useUser} from '@auth0/nextjs-auth0/client';
+import * as auth0Client from '@auth0/nextjs-auth0/client';
 import React, {useState, useEffect} from "react";
 
+
 function TablaPerfil() {
+
   const apiURL = 'http://127.0.0.1:8000/rest';
 
-  const { user, isLoading } = useUser();
+  const { user, isLoading} = useUser();
     
       if (isLoading) {
         // Mostrar un indicador de carga mientras Auth0 verifica la sesión
@@ -19,18 +22,21 @@ function TablaPerfil() {
       const [pets, setPets] = useState();
   
       const getPets = async () => {
+        
           const response = await fetch(`${apiURL}/orders/${email}`);
-          setPets(await response.json());
+          
+          setPets(await response.json());     
       }
   
       useEffect(() => {
           getPets();
       },[]);
-  
-      const categoryNames = {
-        1: "Perro",
-        2: "Gato",
-        3: "Conejo"
+
+    
+    const categoryNames = {
+       1: "Perro",
+       2: "Gato",
+       3: "Conejo"
     };
 
     const sexo = {

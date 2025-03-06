@@ -8,11 +8,23 @@ import React, {useState, useEffect} from "react";
 import { useUser } from '@auth0/nextjs-auth0/client';
 
 function NavBar() {
-    const { user, isLoading } = useUser();
+    const { user,error, isLoading } = useUser();
+    const [protectedData, setProtectedData] = useState(null);
   
     if (isLoading) {
       // Mostrar un indicador de carga mientras Auth0 verifica la sesión
       return <div>Cargando...</div>;
+    }
+    if (error) return <p>Ocurrió un error: {error.message}</p>;
+
+    async function fetchProtectedData() {
+      try {
+        const res = await fetch("/api/protected");
+        const data = await res.json();
+        setProtectedData(data);
+      } catch (err) {
+        console.error("Error al obtener datos protegidos:", err);
+      }
     }
   
   return (
@@ -61,6 +73,11 @@ function NavBar() {
             <Button variant="outline-dark">
               <Link href={"/api/auth/logout"} style={{ textDecoration: 'none' }} className='link-dark'>Cerrar Sesion</Link>
             </Button>
+            <button onClick={fetchProtectedData}>Obtener datos protegidos</button>
+
+            {protectedData && (
+              <pre>{JSON.stringify(protectedData, null, 2)}</pre>
+            )}
             </div>
             )}
             </div>

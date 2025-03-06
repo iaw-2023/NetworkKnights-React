@@ -6,6 +6,9 @@ import TablaPerfil from "../components/TablaPerfil";
 import TablaPedidos from "../components/TablaPedidos";
 import CardPerfil from "../components/CardPerfil";
 import '../CarouselDonar.css';
+import { useUser } from "@auth0/nextjs-auth0/client";
+
+
 
 function perfil(){
 
