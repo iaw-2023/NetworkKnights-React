@@ -7,7 +7,7 @@ import { useState, useRef } from 'react';
 import Form from 'react-bootstrap/Form';
 import CarouselDonar from "src/app/components/Carousel";
 
-function donar() {
+function Donar() {
   const apiURL = 'https://rodi-duran-laravel-79zb-h08vqyo8z-network-knights.vercel.app/rest';
   const apiTest = 'http://127.0.0.1:8000/rest'
   const [preferenciaId, setPreferenciaId] = useState(null);
@@ -86,4 +86,4 @@ function donar() {
     )
   }
 
-export default donar
+export default Donar
