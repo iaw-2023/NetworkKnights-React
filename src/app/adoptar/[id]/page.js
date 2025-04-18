@@ -38,7 +38,7 @@ function AdoptarId({params}) {
 
     console.log("Datos enviados:", queryJson);
 
-    const response = await fetch(`${apiURL}/orders`, {
+    const response = await fetch("/api/create-order", {
         method: 'POST',
         headers: {
         'Content-Type': 'application/json'

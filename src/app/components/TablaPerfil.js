@@ -17,22 +17,22 @@ function TablaPerfil() {
       }
 
       const email = user.email;
-      console.log('email:',email);
+      //console.log('email:',email);
 
       const [pets, setPets] = useState();
   
       const getPets = async () => {
         
-          const response = await fetch(`${apiURL}/orders/${email}`);
-          
-          setPets(await response.json());     
+          const response = await fetch("/api/get-orders/"+email);
+          const data = await response.json();
+          setPets(data);     
+          console.log("Respuesta del backend:", data);
       }
   
       useEffect(() => {
           getPets();
       },[]);
-
-    
+  
     const categoryNames = {
        1: "Perro",
        2: "Gato",
