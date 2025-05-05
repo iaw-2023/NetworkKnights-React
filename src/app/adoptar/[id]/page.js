@@ -7,6 +7,28 @@ import Link from "next/link";
 function AdoptarId({ params }) {
   const apiURL = 'http://127.0.0.1:8000/rest';
 
+/*<<<<<<< ordersauth0
+  
+  const handleSubmit = async (e) => {
+    
+    e.preventDefault();
+    
+    const queryJson={
+      email: user.email,
+      id_pet: params.id,
+      name: user.given_name,
+      surname: user.family_name
+    } 
+
+    console.log("Datos enviados:", queryJson);
+
+    const response = await fetch("/api/create-order", {
+        method: 'POST',
+        headers: {
+        'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(queryJson)
+=======*/
   const [pet, setPet] = useState(null);
   const [email, setEmail] = useState('');
   const [tips, setTips] = useState('');
@@ -33,6 +55,7 @@ function AdoptarId({ params }) {
         sex: petData.sex,
         size: petData.size,
       }),
+/*>>>>>>> main*/
     });
 
     const data = await response.json();
