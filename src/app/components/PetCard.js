@@ -17,7 +17,8 @@ function PetCard(pet) {
             FaPaw className="text-warning" /> {pet.category}
           </Card.Text>
           <Card.Text className="text-muted d-flex align-items-center gap-2">
-          {pet.sex === 'male' ? <BsGenderMale className="text-info" /> : <BsGenderFemale className="text-danger" />} {pet.sex}
+          {pet.sex === 'male' ? <BsGenderMale className="text-info" /> : <BsGenderFemale className="text-danger" />} 
+          {pet.sex === "male" ? "Macho" : "Hembra"}
           </Card.Text>
         
         <Button variant="outline-secondary">
