@@ -2,6 +2,7 @@
 
 import React from "react";
 import { Container, Row, Col, Card, Button, ListGroup, Image } from 'react-bootstrap';
+import Head from 'next/head';
 import TablaPerfil from "../components/TablaPerfil";
 import TablaPedidos from "../components/TablaPedidos";
 import CardPerfil from "../components/CardPerfil";
@@ -15,7 +16,9 @@ function perfil(){
   const apiTest = 'http://127.0.0.1:8000/rest'
 
     return(
+
         <Container className="text-center mt-3 pb-4">
+        <title>Perfil de usuario | Adopciones</title> 
         <h1 className="display-5 fw-bold text-dark">Información de tu perfil</h1>
         <p className="lead text-muted">
           Aquí podrás ver tu información personal y tus pedidos de adopción.
