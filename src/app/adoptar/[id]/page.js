@@ -124,11 +124,26 @@ function AdoptarId({ params }) {
         </div>
       )}
 
-      {/* Sección de Consejos de Cuidado */}
+      {/* Sección de Consejos de Cuidado 
       <div style={styles.tipsContainer}>
-        <h4 style={styles.tipsTitle}>Consejos de Cuidado 🐶</h4>
-        <p style={styles.tipsText}>{tips}</p>
+        <h4 style={styles.tipsTitle}>Consejos de cuidado:</h4>
+       
+        <div style={styles.tipsText} 
+        dangerouslySetInnerHTML={{ __html: tips }} />
       </div>
+*/}
+      <div style={styles.tipsContainer}>
+      <h4 style={styles.tipsTitle}>Consejos de cuidado:</h4>
+      <div
+        style={{
+        ...styles.tipsText,
+        position: 'relative',
+        overflowY: 'auto',
+        paddingRight: '10px'
+      }}
+      dangerouslySetInnerHTML={{ __html: tips }}
+  />
+</div>
     </div>
   );
 
@@ -143,6 +158,7 @@ const styles = {
     alignItems: 'flex-start',
     padding: '40px',
     fontFamily: 'Poppins, sans-serif',
+    gap: '40px', // separación entre columnas
   },
   petCard: {
     width: '60%',
@@ -177,26 +193,16 @@ const styles = {
     border: '1px solid #ddd',
     width: '100%',
   },
-  button: {
-    marginTop: '10px',
-    backgroundColor: '#ff7b00',
-    border: 'none',
-    padding: '10px 20px',
-    fontSize: '16px',
-    borderRadius: '8px',
-    cursor: 'pointer',
-  },
   tipsContainer: {
     width: '30%',
     padding: '20px',
     backgroundColor: '#f8f9fa',
     borderRadius: '10px',
     boxShadow: '0 4px 6px rgba(0, 0, 0, 0.1)',
-    position: 'fixed',
-    right: '20px',
-    top: '50px',
     fontSize: '16px',
     lineHeight: '1.5',
+    maxHeight: '600px',         // límite de altura
+    overflowY: 'auto',          // scroll si es necesario
   },
   tipsTitle: {
     fontSize: '20px',
@@ -205,8 +211,9 @@ const styles = {
     marginBottom: '10px',
   },
   tipsText: {
-    color: '#666',
+    color: '#666'
   },
 };
+
 
 export default AdoptarId;
