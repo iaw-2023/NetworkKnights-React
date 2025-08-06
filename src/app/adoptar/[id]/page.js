@@ -2,12 +2,31 @@
 
 import { Form, FormGroup, FormControl, FormLabel, Button } from "react-bootstrap";
 import React, { useState, useEffect } from "react";
+import OrderModal from "../../components/OrderModal";
 import Link from "next/link";
+import { useUser } from '@auth0/nextjs-auth0/client';
+import { useRouter } from 'next/navigation';
+
 
 function AdoptarId({ params }) {
-  const apiURL = 'http://127.0.0.1:8000/rest';
 
-/*<<<<<<< ordersauth0
+   const { user, error, isLoading } = useUser();
+    if (isLoading) return <div>Loading...</div>;
+    if (error) return <div>{error.message}</div>;
+
+  const [show, setShow] = useState(false);
+
+  const handleShow = () => setShow(true);
+
+  const handleClose = () => setShow(false);
+
+  const router = useRouter();
+
+  const apiURL = 'http://127.0.0.1:8000/rest';
+  const [email, setEmail] = useState('');
+  const [pet, setPet] = useState(null);
+  const [tips, setTips] = useState('');
+  const [address, setAddress] = useState('');
   
   const handleSubmit = async (e) => {
     
@@ -17,7 +36,8 @@ function AdoptarId({ params }) {
       email: user.email,
       id_pet: params.id,
       name: user.given_name,
-      surname: user.family_name
+      surname: user.family_name,
+      address: address
     } 
 
     console.log("Datos enviados:", queryJson);
@@ -28,10 +48,12 @@ function AdoptarId({ params }) {
         'Content-Type': 'application/json'
         },
         body: JSON.stringify(queryJson)
-=======*/
-  const [pet, setPet] = useState(null);
-  const [email, setEmail] = useState('');
-  const [tips, setTips] = useState('');
+    });
+
+    router.push('/perfil'); // Cambiá '/perfil' por la ruta real del perfil de usuario
+    
+
+    };
 
   useEffect(() => {
     fetch(`${apiURL}/pets/${params.id}`)
@@ -76,7 +98,7 @@ function AdoptarId({ params }) {
 
 
           {/* Formulario para enviar la orden */}
-          <Form style={styles.form}>
+          <Form onSubmit={handleSubmit} style={styles.form}>
             <FormGroup controlId="formEmail">
               <FormLabel>Email</FormLabel>
               <FormControl
@@ -86,20 +108,46 @@ function AdoptarId({ params }) {
                 style={styles.input}
               />
             </FormGroup>
-            <Button variant="primary" type="submit" style={styles.button}>
+            <FormGroup controlId="formAddress">
+              <FormLabel>Dirección</FormLabel>
+                <FormControl
+                  type="text"
+                  value={address}
+                  onChange={(e) => setAddress(e.target.value)}
+                  style={styles.input}
+                />
+           </FormGroup>
+            <Button  onClick={handleShow} variant="primary" type="submit">
               Adoptar ❤️
             </Button>
           </Form>
         </div>
       )}
 
-      {/* Sección de Consejos de Cuidado */}
+      {/* Sección de Consejos de Cuidado 
       <div style={styles.tipsContainer}>
-        <h4 style={styles.tipsTitle}>Consejos de Cuidado 🐶</h4>
-        <p style={styles.tipsText}>{tips}</p>
+        <h4 style={styles.tipsTitle}>Consejos de cuidado:</h4>
+       
+        <div style={styles.tipsText} 
+        dangerouslySetInnerHTML={{ __html: tips }} />
       </div>
+*/}
+      <div style={styles.tipsContainer}>
+      <h4 style={styles.tipsTitle}>Consejos de cuidado:</h4>
+      <div
+        style={{
+        ...styles.tipsText,
+        position: 'relative',
+        overflowY: 'auto',
+        paddingRight: '10px'
+      }}
+      dangerouslySetInnerHTML={{ __html: tips }}
+  />
+</div>
     </div>
   );
+
+
 }
 
 // Estilos mejorados
@@ -110,6 +158,7 @@ const styles = {
     alignItems: 'flex-start',
     padding: '40px',
     fontFamily: 'Poppins, sans-serif',
+    gap: '40px', // separación entre columnas
   },
   petCard: {
     width: '60%',
@@ -144,26 +193,16 @@ const styles = {
     border: '1px solid #ddd',
     width: '100%',
   },
-  button: {
-    marginTop: '10px',
-    backgroundColor: '#ff7b00',
-    border: 'none',
-    padding: '10px 20px',
-    fontSize: '16px',
-    borderRadius: '8px',
-    cursor: 'pointer',
-  },
   tipsContainer: {
     width: '30%',
     padding: '20px',
     backgroundColor: '#f8f9fa',
     borderRadius: '10px',
     boxShadow: '0 4px 6px rgba(0, 0, 0, 0.1)',
-    position: 'fixed',
-    right: '20px',
-    top: '50px',
     fontSize: '16px',
     lineHeight: '1.5',
+    maxHeight: '600px',         // límite de altura
+    overflowY: 'auto',          // scroll si es necesario
   },
   tipsTitle: {
     fontSize: '20px',
@@ -172,8 +211,9 @@ const styles = {
     marginBottom: '10px',
   },
   tipsText: {
-    color: '#666',
+    color: '#666'
   },
 };
+
 
 export default AdoptarId;
