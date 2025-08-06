@@ -10,24 +10,22 @@ import { useRouter } from 'next/navigation';
 
 function AdoptarId({ params }) {
 
-   const { user, error, isLoading } = useUser();
+  const { user, error, isLoading } = useUser();
+  const [show, setShow] = useState(false);
+  const [email, setEmail] = useState('');
+  const [pet, setPet] = useState(null);
+  const [tips, setTips] = useState('');
+  const [address, setAddress] = useState('');
+  const router = useRouter();
+  const apiURL = 'http://127.0.0.1:8000/rest';
+
     if (isLoading) return <div>Loading...</div>;
     if (error) return <div>{error.message}</div>;
-
-  const [show, setShow] = useState(false);
 
   const handleShow = () => setShow(true);
 
   const handleClose = () => setShow(false);
 
-  const router = useRouter();
-
-  const apiURL = 'http://127.0.0.1:8000/rest';
-  const [email, setEmail] = useState('');
-  const [pet, setPet] = useState(null);
-  const [tips, setTips] = useState('');
-  const [address, setAddress] = useState('');
-  
   const handleSubmit = async (e) => {
     
     e.preventDefault();

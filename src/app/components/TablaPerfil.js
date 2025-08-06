@@ -57,7 +57,7 @@ function TablaPerfil() {
       </thead>
       <tbody>
         {pets?.map((pet => (
-                    <tr key={pet.id}md={4} className="mt-4">
+                    <tr key={pet.id} className="mt-4">
                             <td>{pet.id}</td>
                             <td>{categoryNames[pet.id_category]}</td>
                             <td>{pet.name}</td>
