@@ -6,7 +6,7 @@ import PetCard from "../components/PetCard";
 import Head from 'next/head';
 
 function Mascotas() {
-  const apiURL = 'http://127.0.0.1:8000/rest';
+  const apiURL = 'https://rodi-duran-laravel-79zb-git-main-network-knights.vercel.app/rest';
   const [pets, setPets] = useState([]);
   const [noPetsMessage, setNoPetsMessage] = useState(null);
 

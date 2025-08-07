@@ -13,7 +13,7 @@ export async function GET(req) {
   
       console.log("✅ Token obtenido correctamente:", accessToken);
 
-    const laravelResponse = await fetch('http://127.0.0.1:8000/rest/protected', {
+    const laravelResponse = await fetch('https://rodi-duran-laravel-79zb-git-main-network-knights.vercel.app/rest/protected', {
         method: "GET",
         headers: {
             "Authorization": `Bearer ${accessToken}`,

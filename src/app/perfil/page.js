@@ -13,7 +13,7 @@ import { useUser } from "@auth0/nextjs-auth0/client";
 
 function perfil(){
 
-  const apiTest = 'http://127.0.0.1:8000/rest'
+  const apiTest = 'https://rodi-duran-laravel-79zb-git-main-network-knights.vercel.app/rest'
 
     return(
 

@@ -6,7 +6,7 @@ import CategoryCard from "../components/CategoryCard";
 
 function Categorias() {
     //const apiURL = 'https://rodi-duran-laravel-79zb-h08vqyo8z-network-knights.vercel.app/rest';
-    const apiURL = 'http://127.0.0.1:8000/rest';
+    const apiURL = 'https://rodi-duran-laravel-79zb-git-main-network-knights.vercel.app/rest';
     const [categories, setCategories] = useState();
 
     const getCategories = async () => {

@@ -9,7 +9,7 @@ import CarouselDonar from "src/app/components/Carousel";
 
 function Donar() {
   const apiURL = 'https://rodi-duran-laravel-79zb-h08vqyo8z-network-knights.vercel.app/rest';
-  const apiTest = 'http://127.0.0.1:8000/rest'
+  const apiTest = 'https://rodi-duran-laravel-79zb-git-main-network-knights.vercel.app/rest'
   const [preferenciaId, setPreferenciaId] = useState(null);
   const [montoDonacion, setMontoDonacion] = useState(null);
   const monto = useRef(null);

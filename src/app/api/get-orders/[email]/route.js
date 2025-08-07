@@ -10,7 +10,7 @@ export async function GET(req, {params}) {
     console.log('email: GET-ORDERS');
     console.log(params.email);
 
-    const res = await fetch(`http://127.0.0.1:8000/rest/orders/${params.email}`, {
+    const res = await fetch(`https://rodi-duran-laravel-79zb-git-main-network-knights.vercel.app/rest/orders/${params.email}`, {
       method: 'GET',
       headers: {
         Authorization: `Bearer ${accessToken}`,

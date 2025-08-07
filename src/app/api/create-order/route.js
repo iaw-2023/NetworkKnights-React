@@ -5,7 +5,7 @@ export async function POST(req) {
   const { accessToken } = await getAccessToken();
   const payload = await req.json();
 
-  const res = await fetch('http://127.0.0.1:8000/rest/orders', {
+  const res = await fetch('https://rodi-duran-laravel-79zb-git-main-network-knights.vercel.app/rest/orders', {
     method: 'POST',
     headers: {
       Authorization: `Bearer ${accessToken}`,

@@ -17,7 +17,7 @@ function AdoptarId({ params }) {
   const [tips, setTips] = useState('');
   const [address, setAddress] = useState('');
   const router = useRouter();
-  const apiURL = 'http://127.0.0.1:8000/rest';
+  const apiURL = 'https://rodi-duran-laravel-79zb-git-main-network-knights.vercel.app/rest';
 
 // 🧠 Traer los datos de la mascota y los tips
   useEffect(() => {
