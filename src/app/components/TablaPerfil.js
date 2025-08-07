@@ -10,28 +10,31 @@ function TablaPerfil() {
   const apiURL = 'http://127.0.0.1:8000/rest';
 
   const { user, isLoading} = useUser();
+  
     
-      if (isLoading) {
+      if (isLoading || !user) {
         // Mostrar un indicador de carga mientras Auth0 verifica la sesión
         return <div>Cargando...</div>;
       }
-
       const email = user.email;
       //console.log('email:',email);
 
       const [pets, setPets] = useState();
   
-      const getPets = async () => {
-        
-          const response = await fetch("/api/get-orders/"+email);
-          const data = await response.json();
-          setPets(data);     
-          console.log("Respuesta del backend:", data);
-      }
-  
       useEffect(() => {
-          getPets();
-      },[]);
+  const getPets = async () => {
+    try {
+      const response = await fetch("/api/get-orders/" + user.email);
+      const data = await response.json();
+      setPets(data);     
+      console.log("Respuesta del backend:", data);
+    } catch (error) {
+      console.error("Error al obtener mascotas:", error);
+    }
+  };
+
+  getPets();
+}, [user.email]);
   
     const categoryNames = {
        1: "Perro",

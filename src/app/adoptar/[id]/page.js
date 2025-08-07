@@ -19,46 +19,13 @@ function AdoptarId({ params }) {
   const router = useRouter();
   const apiURL = 'http://127.0.0.1:8000/rest';
 
-    if (isLoading) return <div>Loading...</div>;
-    if (error) return <div>{error.message}</div>;
-
-  const handleShow = () => setShow(true);
-
-  const handleClose = () => setShow(false);
-
-  const handleSubmit = async (e) => {
-    
-    e.preventDefault();
-    
-    const queryJson={
-      email: user.email,
-      id_pet: params.id,
-      name: user.given_name,
-      surname: user.family_name,
-      address: address
-    } 
-
-    console.log("Datos enviados:", queryJson);
-
-    const response = await fetch("/api/create-order", {
-        method: 'POST',
-        headers: {
-        'Content-Type': 'application/json'
-        },
-        body: JSON.stringify(queryJson)
-    });
-
-    router.push('/perfil'); // Cambiá '/perfil' por la ruta real del perfil de usuario
-    
-
-    };
-
+// 🧠 Traer los datos de la mascota y los tips
   useEffect(() => {
     fetch(`${apiURL}/pets/${params.id}`)
       .then(response => response.json())
       .then(data => {
         setPet(data);
-        getPetTips(data); // Obtener consejos automáticamente
+        getPetTips(data);
       })
       .catch(error => console.error('Error fetching pet data:', error));
   }, [params.id]);
@@ -75,12 +42,39 @@ function AdoptarId({ params }) {
         sex: petData.sex,
         size: petData.size,
       }),
-/*>>>>>>> main*/
     });
 
     const data = await response.json();
     setTips(data.tips || 'No se pudieron obtener los consejos.');
   };
+
+  const handleShow = () => setShow(true);
+  const handleClose = () => setShow(false);
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+
+    const queryJson = {
+      email: user.email,
+      id_pet: params.id,
+      name: user.given_name,
+      surname: user.family_name,
+      address: address
+    };
+
+    const response = await fetch("/api/create-order", {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(queryJson)
+    });
+
+    router.push('/perfil');
+  };
+
+  // ✅ Mostrar estados especiales desde JSX (sin interrumpir hooks)
+  if (isLoading) return <div>Loading...</div>;
+  if (error) return <div>{error.message}</div>;
+
 
   return (
     <div style={styles.container}>
@@ -91,7 +85,9 @@ function AdoptarId({ params }) {
           <img src={pet.image} alt={pet.name} style={styles.petImage} />
           <p style={styles.petText}>🐾 Tipo: <strong>{pet.category_name}</strong></p>
           <p style={styles.petText}>
-  ⚧ Sexo: <strong>{pet.sex === "male" ? "Macho" : "Hembra"}</strong>
+  ⚧ Sexo: <strong>{pet.sex === "male" ? "Macho" : "Hembra"}</strong></p>
+  <p style={styles.petText}>
+  Tamaño: <strong>{pet.size === 'small' ? 'Pequeño' : (pet.size === 'medium' ? 'Medio' : (pet.size === 'large' ? 'Grande' : 'No definido'))}</strong>
 </p>
 
 
