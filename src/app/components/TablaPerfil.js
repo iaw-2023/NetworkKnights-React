@@ -27,13 +27,13 @@ function TablaPerfil() {
   };
 
   getPets();
-}, [user.email]);
+}, []);
 
       if (isLoading || !user) {
         // Mostrar un indicador de carga mientras Auth0 verifica la sesión
         return <div>Cargando...</div>;
       }
-      const email = user.email;
+      const email = user?.email;
       //console.log('email:',email);
   
     const categoryNames = {
