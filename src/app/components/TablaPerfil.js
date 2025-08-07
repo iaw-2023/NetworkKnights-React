@@ -10,18 +10,11 @@ function TablaPerfil() {
   const apiURL = 'http://127.0.0.1:8000/rest';
 
   const { user, isLoading} = useUser();
+  const [pets, setPets] = useState();
   
-    
-      if (isLoading || !user) {
-        // Mostrar un indicador de carga mientras Auth0 verifica la sesión
-        return <div>Cargando...</div>;
-      }
-      const email = user.email;
-      //console.log('email:',email);
+  useEffect(() => {
+    if(!user) return;
 
-      const [pets, setPets] = useState();
-  
-      useEffect(() => {
   const getPets = async () => {
     try {
       const response = await fetch("/api/get-orders/" + user.email);
@@ -35,6 +28,13 @@ function TablaPerfil() {
 
   getPets();
 }, [user.email]);
+
+      if (isLoading || !user) {
+        // Mostrar un indicador de carga mientras Auth0 verifica la sesión
+        return <div>Cargando...</div>;
+      }
+      const email = user.email;
+      //console.log('email:',email);
   
     const categoryNames = {
        1: "Perro",
